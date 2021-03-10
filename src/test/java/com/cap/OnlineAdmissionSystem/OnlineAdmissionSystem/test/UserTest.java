@@ -24,10 +24,13 @@ class UserTest {
 	@Autowired
 	ILoginRepository loginRepository;
 	
-//    User user = new User(111, "Ria", "Ann", "Charles", "ria@gmail.com", "9999999999", "1234 5678 9876");
-//	User user1 = new User(112, "John", "Roy", "Thomas", "john@gmail.com", "1111111111", "9876 5432 1987");
+    //User user = new User(100, "Ria", "Ann", "Charles", "ria@gmail.com", "9999999999", "1234 5678 9876");
+    User user1 = new User(101, "Ria", "Ann", "Charles", "ria@gmail.com", "9999999999", "1234 5678 9876");
+	User use2 = new User(112, "John", "Roy", "Thomas", "john@gmail.com", "1111111111", "9876 5432 1987");
+	
 //	
-	Login login = new Login(101, "xyz", "Admin");
+	Login login = new Login(1, "xyz", "Admin");
+	Login login2 = new Login(10, "agr", "Admin");
 //	Login login1 = new Login(102, "abc", "Student");
 
 	
@@ -57,18 +60,11 @@ class UserTest {
 		userService.getUserDetailsById(111);
 	}
 	
-	//@Test
+   // @Test
 	public void testdeleteUserDetailsById() {
-		userService.deleteUserDetailsById(112);
+		userService.deleteUserDetailsById(114);
 	}
 		
-//	User user = new User(111, "Ria", "Ann", "Charles", "ria@gmail.com", "9999999999", "1234 5678 9876");
-//	User u = userService.deleteUserDetailsById(111);
-//		//User u = userService.deleteUserById(111);
-//		System.out.println(u);
-////		//userService.deleteUserById(111);
-//		}
-	
 	//@Test
 	public void testupdateUserDetails() {
 //		userService.updateUserDetails(user);
@@ -96,15 +92,12 @@ class UserTest {
 	
 	//@Test
 	public void testdeleteLoginDetailsById() {
-		userService.deleteLoginDetailsById(102);
-		//Login login = new Login(101, "xyz", "Admin");
-		//Login l = userService.deleteLoginDetailsById(101);
-		//System.out.println(l);	    
-		//userService.deleteLoginById(101);
+		userService.deleteLoginDetailsById(105);
+		//System.out.println(l);
 	}
 	
 	
-	@Test
+	//@Test
 	public void testchangePassword() {
 		userService.changePassword(login);
 	}
@@ -112,7 +105,7 @@ class UserTest {
 	
 	//@Test
 	public void testresetPassword() {
-		userService.resetPassword(login);
+		userService.resetPassword(login2);
 	}
 	
 	

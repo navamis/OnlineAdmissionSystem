@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.cap.OnlineAdmissionSystem.OnlineAdmissionSystem.entities.Login;
 import com.cap.OnlineAdmissionSystem.OnlineAdmissionSystem.entities.User;
+import com.cap.OnlineAdmissionSystem.OnlineAdmissionSystem.exceptions.LoginException;
 import com.cap.OnlineAdmissionSystem.OnlineAdmissionSystem.exceptions.UserNotFoundException;
 import com.cap.OnlineAdmissionSystem.OnlineAdmissionSystem.repo.ILoginRepository;
 import com.cap.OnlineAdmissionSystem.OnlineAdmissionSystem.repo.IUserRepository;
@@ -65,38 +66,45 @@ public class UserService implements IUserService {
 
 	@Override
 	public User deleteUserDetailsById(int userId) {
-	Optional<User> user = userRepository.findById(userId);
-	if(user.isEmpty()){
-		throw new UserNotFoundException("User not found with id : "+userId);
-	}
-	User u = user.get();
-	userRepository.delete(u);
-	return u;
-	}
-	
-	@Override
-	public Login deleteLoginDetailsById(int userId) {
-		Optional<Login> login = loginRepository.findById(userId);
-		if(login.isEmpty()){
-		Login l = login.get();
-	loginRepository.delete(l);
-		return l;
+		Optional<User> user = userRepository.findById(userId);
+		if(user.isEmpty()){
+			throw new UserNotFoundException("User not found with id : "+userId);
 		}
-		return login;
-		
-		
-		
-	//}
-	
-//
-//	@Override
-//	public Login deleteLoginDetailsById(int userId)  {
-//		Optional<Login> del1 = loginRepository.findById(userId);
-//		Login l = del1.get();
-//		loginRepository.delete(l);
-//		System.out.println(l);
-//		return l;
+		User u = user.get();
+		userRepository.delete(u);
+		return u;
+	}
+//	Optional<User> user = userRepository.findById(userId);
+//	if(user.isEmpty()){
+//		throw new UserNotFoundException("User not found with id : "+userId);
 //	}
+//	User u = user.get();
+//	userRepository.delete(u);
+//	return u;
+//	}
+	
+//	@Override
+//	public Login deleteLoginDetailsById(int userId) {
+//		Optional<Login> login = loginRepository.findById(userId);
+//		if(login.isEmpty()){
+//			throw new LoginException("User not found with id : "+ userId);
+//		}
+//		Login l = login.get();
+//	    loginRepository.delete(l);
+//		return l;
+//		}
+//	
+
+	
+
+	@Override
+	public Login deleteLoginDetailsById(int userId)  {
+		Optional<Login> del1 = loginRepository.findById(userId);
+		Login l = del1.get();
+		loginRepository.delete(l);
+		System.out.println(l);
+		return l;
+	}
 		
 
 		@Override
@@ -120,7 +128,7 @@ public class UserService implements IUserService {
 				cp.getPassword();
 				loginRepository.delete(cp);
 			}
-			if(login3.isEmpty()) {
+				if(login3.isEmpty()) {
 				Login resetPassword = login3.get();
 				resetPassword.setPassword(login.getPassword());
 			}
